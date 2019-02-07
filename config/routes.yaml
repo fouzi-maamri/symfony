@@ -1,0 +1,50 @@
+hello_index:
+    path: /hello/
+    controller: App\Controller\HelloController::index
+    requirements:
+        prenom: '[A-Za-z]+'
+
+hello_perso_prenom:
+    path: /hello/{prenom}/
+    controller: App\Controller\HelloController::index_perso_prenom
+    requirements:
+       prenom: '[A-Za-z]+'
+
+hello_perso_prenom_age:
+    path: /hello/{prenom}/{age}
+    controller: App\Controller\HelloController::index_perso_prenom_age
+    requirements:
+      prenom: '[A-Za-z]+'
+      age: '[0-9]+'
+
+anas:
+    path: /anaslbugouss/
+    controller: App\Controller\HelloController::functionanas
+
+add:
+    path: /telephone/add
+    controller: App\Controller\TelephoneController::add
+
+add2:
+    path: /telephone/new/{marque}/{type}/{taille}
+    controller: App\Controller\TelephoneController::add2
+
+add3:
+    path: /telephone/modifiez/{id}/{marque}/{type}/{taille}
+    controller: App\Controller\TelephoneController::modifierTel
+
+add4:
+    path: /telephone/suprimetel/{id}
+    controller: App\Controller\TelephoneController::suprimetel
+
+add5:
+    path: /telephone/
+    controller: App\Controller\TelephoneController::index2
+
+add6:
+    path: /biggerthan/
+    controller: App\Controller\TelephoneController::biggerthan
+
+add7:
+    path: /telephone/search/{marque}
+    controller: App\Controller\TelephoneController::searchMarque

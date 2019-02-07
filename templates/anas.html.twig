@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p> BONJOUR</p> {{ prenom }}
+    <br>
+    <p>ounjour </p>{{ prenom2 }}
+
+    {% for p in prenoms %}
+      {{ p }}
+    {% endfor %}
+{% endblock %}
