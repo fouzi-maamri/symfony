@@ -38,6 +38,8 @@ class TelephoneRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
+
+      // cette function pour DQL il ya deja la selct actif
     public function findmarque($marque)
     {
         $em = $this->getEntityManager();
@@ -48,6 +50,27 @@ class TelephoneRepository extends ServiceEntityRepository
         )->setParameter('m', $marque);
           return $query->execute();
     }
+
+
+    // cette funtion pour la funtion QB on ajoute meme pas le where pour le select il est deja dans la function FindMarque()
+
+    public function findBiggerSizeThanQb($value)
+      {
+          // on travaille sur l'entité Telephone (le Repo est associé à l'entité Telephone)
+          // 't' est l'alias que nous pouvons utiliser par la suite.
+          $qb = $this->createQueryBuilder('t');
+
+          // ajout d'une clause 'Where'
+          // FROM et SELECT ne sont pas indispensable vu que le qb a été construit en lien avec l'entité Telephone
+          $qb->andWhere('t.taille >= :size')
+              ->setParameter('size', $value);
+
+          // récupération de la requête
+          $query = $qb->getQuery();
+
+          // exécution et renvoie du résultat
+          return $query->execute();
+      }
 
     // /**
     //  * @return Telephone[] Returns an array of Telephone objects

@@ -48,3 +48,11 @@ add6:
 add7:
     path: /telephone/search/{marque}
     controller: App\Controller\TelephoneController::searchMarque
+
+QueryBuilder:
+    path: /telephone/search/{marque}/{type}
+    controller: App\Controller\TelephoneController::searchMarqueType
+
+QueryBuilder2:
+    path: /telephone/search/{id}
+    controller: App\Controller\TelephoneController::searchId
