@@ -65,26 +65,49 @@ class TelephoneController extends AbstractController
       $repo = $this->getDoctrine()->getRepository(Telephone::class);
       $telSamsung = $repo->findBy(["marque" => "Samsung"]);
       return $this->render("telephone/telephone.html.twig",["telSamsung" => $telSamsung]);
+      //cette function pour le route add5
     }
 
     public function biggerthan(){
       $repo= $this->getDoctrine()->getRepository(Telephone::class);
       $results= $repo->findBiggerSizeThan(5.5);
       return $this->render('DQL/DQL.html.twig' ,['results' => $results]);
+      //cette function pour la route add6 // lien /biggerthan/
+      //cette function permi laffichage tous les telephone >= 5.5
     }
 
     public function searchMarque(Request $request , $marque){
       $repo = $this->getDoctrine()->getRepository(Telephone::class);
       $results= $repo->findmarque($request->attributes->get('marque'));
       return $this->render('DQL/searchMarque.html.twig',["results" => $results]);
+      //cette fonction pour la route add7
     }
 
-    public function searchMarqueType(Request $request , $id){
+    public function searchId(Request $request , $id){
+      $repo = $this->getDoctrine()->getRepository(Telephone::class);
+      $results= $repo->findBiggerSizeThanQb($request->attributes->get('id'));
+      //$requist hiya likhatkhdem lina ID
+      return $this->render('DQL/searchId.html.twig',["results" => $results]);
+      //cette  function responsable sur taille de telephone (le nom de id = c'est le nom de taille ) ( t affiche lina les telephone l superiere mn 5 )
+      //cette function pour la route QueryBuilder
+    }
+
+    /*
+    public function searchMarqueType(Request $request , $marque , $type){
       $repo = $this->getDoctrine()->getRepository(Telephone::class);
       $results= $repo->findBiggerSizeThanQb($request->attributes->get('id'));
       //$requist hiya likhatkhdem lina ID
       return $this->render('DQL/searchId.html.twig',["results" => $results]);
       //cette  function responsable sur id avec la taille de telephone ( t affiche lina les telephone l superiere mn 5 )
+    }
+    */
+
+    public function trouveTelephone(Request $request , $marque , $type){
+      $repo = $this->getDoctrine()->getRepository(Telephone::class);
+      $results= $repo->find->findTelephone($request->attributes->get('marque') , $request->attributes->get('type'));
+      //$requist hiya likhatkhdem lina ID
+      return $this->render('DQL/trouveTelephone.html.twig',["results" => $results]);
+      //cette function pour la route QueryBuilder2
     }
 
 }

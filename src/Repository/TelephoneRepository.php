@@ -72,6 +72,25 @@ class TelephoneRepository extends ServiceEntityRepository
           return $query->execute();
       }
 
+      ///telephone/advancedsearch/terme_marque/terme_type/. terme_marque et terme_type ne sont pas obligatoire.
+      //On peut par exemple chercher /telephone/advancedsearch/0/8/
+      //pour rechercher les téléphone avec type=8 (le zéro indique qu'on ne fait pas de recherche par téléphone)
+      public function findTelephone($marque , $type){
+        $qb = $this->createQueryBuilder('t');
+
+        if($marque != 0){
+            $qb->andWhere('t.marque = :m')
+                ->addParameter('m' , $marque);
+        }
+        if($type !=0){
+            $qb->andWhere('t.type = :ty')
+                ->addParameter('ty' , $type);
+        }
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
     // /**
     //  * @return Telephone[] Returns an array of Telephone objects
     //  */

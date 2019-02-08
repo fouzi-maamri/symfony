@@ -50,9 +50,10 @@ add7:
     controller: App\Controller\TelephoneController::searchMarque
 
 QueryBuilder:
-    path: /telephone/search/{marque}/{type}
-    controller: App\Controller\TelephoneController::searchMarqueType
-
-QueryBuilder2:
     path: /telephone/search/{id}
     controller: App\Controller\TelephoneController::searchId
+
+
+QueryBuilder2:
+    path: telephone/advancedsearch/terme_marque/terme_type/
+    controller: App\Controller\TelephoneController::trouveTelephone
