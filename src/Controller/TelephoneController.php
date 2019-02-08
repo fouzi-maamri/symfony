@@ -79,5 +79,12 @@ class TelephoneController extends AbstractController
       return $this->render('DQL/searchMarque.html.twig',["results" => $results]);
     }
 
+    public function searchMarqueType(Request $request , $id){
+      $repo = $this->getDoctrine()->getRepository(Telephone::class);
+      $results= $repo->findBiggerSizeThanQb($request->attributes->get('id'));
+      //$requist hiya likhatkhdem lina ID
+      return $this->render('DQL/searchId.html.twig',["results" => $results]);
+      //cette  function responsable sur id avec la taille de telephone ( t affiche lina les telephone l superiere mn 5 )
+    }
 
 }
