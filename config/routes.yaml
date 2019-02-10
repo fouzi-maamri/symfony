@@ -55,5 +55,5 @@ QueryBuilder:
 
 
 QueryBuilder2:
-    path: telephone/advancedsearch/terme_marque/terme_type/
+    path: /telephone/advancedsearch/{marque}/{type}/
     controller: App\Controller\TelephoneController::trouveTelephone

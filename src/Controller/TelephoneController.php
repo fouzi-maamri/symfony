@@ -104,10 +104,11 @@ class TelephoneController extends AbstractController
 
     public function trouveTelephone(Request $request , $marque , $type){
       $repo = $this->getDoctrine()->getRepository(Telephone::class);
-      $results= $repo->find->findTelephone($request->attributes->get('marque') , $request->attributes->get('type'));
+      $results= $repo->findTelephone($request->attributes->get('marque') , $request->attributes->get('type'));
       //$requist hiya likhatkhdem lina ID
       return $this->render('DQL/trouveTelephone.html.twig',["results" => $results]);
       //cette function pour la route QueryBuilder2
+      // soit on tapper 0 sur la marque soit 0 dans le tyep ilaffiche quelque chose
     }
 
 }
