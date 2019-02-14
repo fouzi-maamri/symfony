@@ -57,3 +57,11 @@ QueryBuilder:
 QueryBuilder2:
     path: /telephone/advancedsearch/{marque}/{type}/
     controller: App\Controller\TelephoneController::trouveTelephone
+
+Formulaire:
+    path: /telephone/new/
+    controller: App\Controller\TelephoneController::new
+
+FormulaireModify:
+    path: /telephone/modify/{id}/
+    controller: App\Controller\TelephoneController::modify
